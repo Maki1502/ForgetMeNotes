@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "749552957668",
+    "project_id": "forget-me-notes-cff8e",
+    "storage_bucket": "forget-me-notes-cff8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749552957668:android:2addfbfd57be3b548ed4f1",
+        "android_client_info": {
+          "package_name": "edu.ib.forget_me_notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749552957668-g2srap295blkqhqeol36c88fbkfgkfh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2gL8th1WYLyoiWL7TVOyVg4hXGWvlHZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749552957668-g2srap295blkqhqeol36c88fbkfgkfh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

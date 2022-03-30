@@ -1,16 +1,10 @@
 package edu.ib.forget_me_notes
 
 import android.os.Bundle
-import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import edu.ib.forget_me_notes.Fragments.*
-import edu.ib.forget_me_notes.databinding.ActivityMainBinding
+import edu.ib.forget_me_notes.fragments.*
 
 class MainActivity : AppCompatActivity() {
 
