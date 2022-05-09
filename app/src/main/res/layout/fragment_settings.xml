@@ -6,6 +6,18 @@
     tools:context=".fragments.SettingsFragment">
 
     <Button
+        android:id="@+id/light_sensor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Sensor"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:textSize="16dp"/>
+
+    <Button
         android:id="@+id/logout_profile_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
