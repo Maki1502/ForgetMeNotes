@@ -9,6 +9,16 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryLight">#7201D195</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="purple">#993399</color>
+    <color name="purpleDark">#663399</color>
+    <color name="purpleSolid">#803399</color>
+    <color name="orange">#FF5722</color>
+    <color name="orangeDark">#952B09</color>
+
+    <color name="whiteDark">#F3F3F3</color>
+    <color name="grey">#CDCDCD</color>
 </resources>

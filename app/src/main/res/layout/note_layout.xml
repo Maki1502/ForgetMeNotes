@@ -14,57 +14,68 @@
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user_profile_image_post"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/plant_image_post"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:padding="5dp"
             android:src="@drawable/leaf" />
 
-        <TextView
-            android:id="@+id/user_name_post"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center"
-            android:text="Plant nick"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:layout_marginLeft="15dp"
-            android:layout_gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/plant_nick_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Plant nick"
+                android:layout_marginTop="20dp"
+                android:textColor="#F7FFEB"
+                android:textSize="24dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/plant_name_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:layout_gravity="center"
+                android:textColor="#E9FBCD"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
 
 <!--        tutaj ikonki?  -->
 
-        <ImageView
-            android:id="@+id/icon1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/leaf"
-            android:padding="5dp"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/icon1"-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:src="@drawable/leaf"-->
+<!--            android:padding="5dp"/>-->
 
-        <ImageView
-            android:id="@+id/icon2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/leaf"
-            android:padding="5dp"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/icon2"-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:src="@drawable/leaf"-->
+<!--            android:padding="5dp"/>-->
 
-        <ImageView
-            android:id="@+id/icon3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/leaf"
-            android:padding="5dp"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/icon3"-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:src="@drawable/leaf"-->
+<!--            android:padding="5dp"/>-->
 
     </LinearLayout>
 

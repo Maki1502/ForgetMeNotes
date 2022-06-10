@@ -1,5 +1,6 @@
 package edu.ib.forget_me_notes
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.navigation_add -> {
-                moveToFragment(AddFragment())
+                item.isChecked = false
+                startActivity(Intent(this@MainActivity, AddNoteActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
 

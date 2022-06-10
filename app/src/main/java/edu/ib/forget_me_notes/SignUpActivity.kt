@@ -9,7 +9,6 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
@@ -22,12 +21,12 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         signup_btn.setOnClickListener {
-            CreateAccout()
+            createAccount()
         }
 
     }
 
-    private fun CreateAccout() {
+    private fun createAccount() {
         val email = email_signup.text.toString()
         val password = password_signup.text.toString()
 

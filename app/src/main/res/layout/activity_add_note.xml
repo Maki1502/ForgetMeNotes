@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AddFragment">
+    tools:context=".AddNoteActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/app_bar_layout_profile"
         android:background="@android:color/white">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/profile_toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="4dp"
             android:layout_marginLeft="6dp"
+            android:layout_marginTop="4dp"
             android:layout_marginRight="6dp"
             android:background="@android:color/white">
 
@@ -24,20 +24,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/close_profile_btn"-->
-<!--                    android:layout_width="20dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_alignParentStart="true"-->
-<!--                    android:src="@android:drawable/ic_delete"/>-->
+                <ImageView
+                    android:id="@+id/close_profile_btn"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@android:drawable/ic_delete" />
 
                 <ImageView
                     android:id="@+id/save_info_profile_btn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="15dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@android:drawable/checkbox_on_background"/>
+                    android:layout_marginRight="15dp"
+                    android:src="@android:drawable/ic_input_add" />
 
             </RelativeLayout>
 
@@ -59,23 +59,23 @@
                 android:id="@+id/plant_photo"
                 android:layout_width="320dp"
                 android:layout_height="320dp"
-                android:layout_marginTop="15dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/leaf"
                 android:layout_below="@id/app_bar_layout_profile"
-                android:layout_gravity="center"/>
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/leaf" />
 
             <TextView
-                android:id="@+id/change_image_txt"
+                android:id="@+id/change_plant_image_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change image"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:textSize="16dp"
-                android:textColor="@color/colorPrimary"
                 android:layout_below="@+id/plant_photo"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Change image"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:onClick="pickPhoto"/>
 
             <LinearLayout
                 android:id="@+id/top_bar"
@@ -86,9 +86,9 @@
                 <LinearLayout
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="15dp"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -106,14 +106,15 @@
                                 android:id="@+id/icon_light"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:src="@drawable/leaf"/>
+                                android:src="@drawable/sun" />
 
-                            <TextView
+                            <EditText
+                                android:id="@+id/light_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Light"
-                                android:textSize="12dp"
-                                android:textColor="@android:color/black"/>
+                                android:textColor="@android:color/black"
+                                android:textSize="12dp" />
 
                         </LinearLayout>
 
@@ -125,17 +126,20 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:layout_marginTop="10dp"
                                 android:id="@+id/icon_water"
                                 android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/leaf"/>
+                                android:layout_height="35dp"
+                                android:src="@drawable/water" />
 
-                            <TextView
+                            <EditText
+                                android:id="@+id/water_txt"
+                                android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Water"
-                                android:textSize="12dp"
-                                android:textColor="@android:color/black"/>
+                                android:textColor="@android:color/black"
+                                android:textSize="12dp" />
 
                         </LinearLayout>
 
@@ -147,17 +151,18 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:id="@+id/icon_1"
+                                android:id="@+id/icon_ground"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:src="@drawable/leaf"/>
+                                android:src="@drawable/ground" />
 
-                            <TextView
+                            <EditText
+                                android:id="@+id/ground_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="/?/?/?"
-                                android:textSize="12dp"
-                                android:textColor="@android:color/black"/>
+                                android:text="Ground"
+                                android:textColor="@android:color/black"
+                                android:textSize="12dp" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -165,10 +170,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/mid_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/mid_bar"
                 android:padding="10dp">
 
                 <EditText
@@ -176,10 +181,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="16dp"
-                    android:inputType="text"
-                    android:hint="Nick" />
+                    android:layout_marginRight="20dp"
+                    android:hint="Nick"
+                    android:inputType="text" />
 
                 <EditText
                     android:id="@+id/plant_name"
@@ -187,10 +192,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/plant_nick"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="16dp"
-                    android:inputType="text"
-                    android:hint="Name"/>
+                    android:layout_marginRight="20dp"
+                    android:hint="Name"
+                    android:inputType="text" />
 
                 <EditText
                     android:id="@+id/plant_info"
@@ -198,10 +203,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/plant_name"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="16dp"
-                    android:inputType="text"
-                    android:hint="Info"/>
+                    android:layout_marginRight="20dp"
+                    android:hint="Info"
+                    android:inputType="text" />
 
             </LinearLayout>
 

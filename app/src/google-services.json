@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "749552957668",
-    "project_id": "forget-me-notes-cff8e",
-    "storage_bucket": "forget-me-notes-cff8e.appspot.com"
+    "project_number": "401571357180",
+    "project_id": "forget-me-notes-b3d18",
+    "storage_bucket": "forget-me-notes-b3d18.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:749552957668:android:2addfbfd57be3b548ed4f1",
+        "mobilesdk_app_id": "1:401571357180:android:dc56a306909e61b75bd279",
         "android_client_info": {
           "package_name": "edu.ib.forget_me_notes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "749552957668-g2srap295blkqhqeol36c88fbkfgkfh8.apps.googleusercontent.com",
+          "client_id": "401571357180-bn1nleo7fsvf5pht6lhaas15lppoa7kg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2gL8th1WYLyoiWL7TVOyVg4hXGWvlHZI"
+          "current_key": "AIzaSyCK85Uj57-LuYvwPXZ5OajIx9GNWC9CcC4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "749552957668-g2srap295blkqhqeol36c88fbkfgkfh8.apps.googleusercontent.com",
+              "client_id": "401571357180-bn1nleo7fsvf5pht6lhaas15lppoa7kg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
