@@ -1,49 +1,39 @@
 package edu.ib.forget_me_notes
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import edu.ib.forget_me_notes.databinding.ActivityMainBinding
+import edu.ib.forget_me_notes.fragments.*
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var textView: TextView
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                textView.setText("Home")
-                //moveToFragment(HomeFragment())
+                moveToFragment(HomeFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.navigation_search -> {
-                textView.setText("Search")
-                //moveToFragment(SearchFragment())
+                moveToFragment(SearchFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.navigation_add -> {
-                textView.setText("Add")
-                //moveToFragment(AddFragment())
+                item.isChecked = false
+                startActivity(Intent(this@MainActivity, AddNoteActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.navigation_notifications -> {
-                textView.setText("Notifications")
-                //moveToFragment(NotificationFragment())
+                moveToFragment(NotificationsFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.navigation_settings -> {
-                textView.setText("Settings")
-                //moveToFragment(SettingsFragment())
+                moveToFragment(SettingsFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -55,16 +45,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        textView = findViewById(R.id.message)
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-        //moveToFragment(HomeFragment())
+        moveToFragment(HomeFragment())
     }
 
-//    private fun moveToFragment(fragment: Fragment) {
-//        val fragmentTrans = supportFragmentManager.beginTransaction()
-//        fragmentTrans.replace(R.id.fragment_container, fragment)
-//        fragmentTrans.commit()
-//    }
+    private fun moveToFragment(fragment: Fragment) {
+        val fragmentTrans = supportFragmentManager.beginTransaction()
+        fragmentTrans.replace(R.id.fragment_container, fragment)
+        fragmentTrans.commit()
+    }
 }

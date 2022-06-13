@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.HomeFragment">
+    tools:context=".fragments.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -11,19 +11,47 @@
         android:id="@+id/app_bar_layout">
 
         <Toolbar
-            android:id="@+id/hom_toolbar"
+            android:id="@+id/home_toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/title"/>
-<!--    trochę do zmiany obraz, bo nie jest tło na 100% zrobione        -->
+            <RelativeLayout
+                android:layout_marginEnd="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/leaf"/>
+
+                <ImageView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/title"
+                    android:layout_toEndOf="@+id/logo"/>
+                <!--    trochę do zmiany obraz, bo nie jest tło na 100% zrobione        -->
+
+            </RelativeLayout>
+
 
         </Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_home"
+        android:layout_below="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/note_layout">
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
