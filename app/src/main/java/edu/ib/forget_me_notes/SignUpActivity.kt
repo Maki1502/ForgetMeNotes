@@ -46,7 +46,7 @@ class SignUpActivity : AppCompatActivity() {
                 mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            saveUserInfo(email, password, progressDialog)
+                            saveUserInfo(email, progressDialog)
                         } else {
                             val message = task.exception!!.toString()
                             Toast.makeText(this, "Error: $message", Toast.LENGTH_LONG).show()
@@ -60,7 +60,7 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    private fun saveUserInfo(email: String, password: String, progressDialog: ProgressDialog) {
+    private fun saveUserInfo(email: String, progressDialog: ProgressDialog) {
         val currentUserID = FirebaseAuth.getInstance().currentUser!!.uid
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("Users")
 

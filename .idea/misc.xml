@@ -13,19 +13,25 @@
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/drawable/ic_launcher_background.xml" value="0.159" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.159" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_account_settings.xml" value="0.25416666666666665" />
+        <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_add_info.xml" value="0.24010416666666667" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_add_note.xml" value="0.25416666666666665" />
+        <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_edit_note.xml" value="0.24010416666666667" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_light_sensor.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_sign_in.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/chip_scale_type.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_add.xml" value="0.22826086956521738" />
+        <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_blank.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_crop_image_view.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_note.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_notifications.xml" value="0.22826086956521738" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_options.xml" value="0.253125" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_search.xml" value="0.22826086956521738" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/fragment_settings.xml" value="0.22826086956521738" />
+        <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/info_item_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/layout/note_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22407407407407406" />
         <entry key="..\:/PWR/Android/ForgetMeNotes/app/src/main/res/menu/main.xml" value="0.25416666666666665" />

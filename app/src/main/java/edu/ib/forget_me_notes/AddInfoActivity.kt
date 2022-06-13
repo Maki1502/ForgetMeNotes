@@ -18,16 +18,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import edu.ib.forget_me_notes.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_add_note.*
+import kotlinx.android.synthetic.main.activity_add_info.*
 
-class AddNoteActivity : AppCompatActivity() {
+class AddInfoActivity : AppCompatActivity() {
 
     private var myUrl = ""
     private var imageUri: Uri? = null
@@ -36,23 +35,23 @@ class AddNoteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_note)
+        setContentView(R.layout.activity_add_info)
 
-        storagePostRef = FirebaseStorage.getInstance().reference.child("User notes")
+        storagePostRef = FirebaseStorage.getInstance().reference.child("Info pictures")
 
-        close_profile_btn.setOnClickListener {
-            val intent = Intent(this@AddNoteActivity, MainActivity::class.java)
+        close_info_btn.setOnClickListener {
+            val intent = Intent(this@AddInfoActivity, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
         }
 
-        save_info_profile_btn.setOnClickListener {
+        save_info_btn.setOnClickListener {
             uploadNote()
         }
     }
 
-    fun pickPhoto(view: View){
+    fun pickInfoPhoto(view: View){
         if (ContextCompat.checkSelfPermission(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
@@ -83,11 +82,11 @@ class AddNoteActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= 28) {
                     val source = ImageDecoder.createSource(this.contentResolver,imageUri!!)
                     pickedBitMap = ImageDecoder.decodeBitmap(source)
-                    plant_photo.setImageBitmap(pickedBitMap)
+                    add_plant_info_photo.setImageBitmap(pickedBitMap)
                 }
                 else {
                     pickedBitMap = MediaStore.Images.Media.getBitmap(this.contentResolver,imageUri)
-                    plant_photo.setImageBitmap(pickedBitMap)
+                    add_plant_info_photo.setImageBitmap(pickedBitMap)
                 }
             }
         }
@@ -99,14 +98,14 @@ class AddNoteActivity : AppCompatActivity() {
         when{
             imageUri == null -> Toast.makeText(this, "Please add image first", Toast.LENGTH_LONG).show()
 
-            TextUtils.isEmpty(light_txt.text.toString()) -> Toast.makeText(this, "Add light level", Toast.LENGTH_LONG).show()
-            TextUtils.isEmpty(water_txt.text.toString()) -> Toast.makeText(this, "Add water level", Toast.LENGTH_LONG).show()
-            TextUtils.isEmpty(ground_txt.text.toString()) -> Toast.makeText(this, "Add ground type", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(add_plant_info_name.text.toString()) -> Toast.makeText(this, "Add name", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(add_info_light_txt.text.toString()) -> Toast.makeText(this, "Add place", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(add_info_water_txt.text.toString()) -> Toast.makeText(this, "Add watering", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(add_info_ground_txt.text.toString()) -> Toast.makeText(this, "Add soil", Toast.LENGTH_LONG).show()
 
-            TextUtils.isEmpty(plant_nick.text.toString()) -> Toast.makeText(this, "Add plant nick", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(add_plant_info_desc.text.toString()) -> Toast.makeText(this, "Add description", Toast.LENGTH_LONG).show()
 
-            TextUtils.isEmpty(plant_name.text.toString()) -> Toast.makeText(this, "Add plant name", Toast.LENGTH_LONG).show()
-            TextUtils.isEmpty(plant_info.text.toString()) -> Toast.makeText(this, "Add info about plant", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(add_plant_info_fert.text.toString()) -> Toast.makeText(this, "Add fertilizer", Toast.LENGTH_LONG).show()
 
             else -> {
                 val progressDialog = ProgressDialog(this)
@@ -132,22 +131,21 @@ class AddNoteActivity : AppCompatActivity() {
                         val downloadUrl = task.result
                         myUrl = downloadUrl.toString()
 
-                        val ref = FirebaseDatabase.getInstance().reference.child("Notes")
+                        val ref = FirebaseDatabase.getInstance().reference.child("Plants")
 
-                        val noteid = ref.push().key
+                        val infoid = ref.push().key
 
                         val noteMap = HashMap<String, Any>()
-                        noteMap["noteid"] = noteid!!
-                        noteMap["publisher"] = FirebaseAuth.getInstance().currentUser!!.uid
-                        noteMap["name"] = plant_name.text.toString()
-                        noteMap["nick"] = plant_nick.text.toString()
-                        noteMap["info"] = plant_info.text.toString()
-                        noteMap["light"] = light_txt.text.toString().lowercase()
-                        noteMap["water"] = water_txt.text.toString().lowercase()
-                        noteMap["ground"] = ground_txt.text.toString().lowercase()
-                        noteMap["noteimage"] = myUrl
+                        noteMap["iid"] = infoid!!
+                        noteMap["infoname"] = add_plant_info_name.text.toString()
+                        noteMap["place"] = add_info_light_txt.text.toString().lowercase()
+                        noteMap["watering"] = add_info_water_txt.text.toString().lowercase()
+                        noteMap["soil"] = add_info_ground_txt.text.toString().lowercase()
+                        noteMap["description"] = add_plant_info_desc.text.toString()
+                        noteMap["fertilizer"] = add_plant_info_fert.text.toString()
+                        noteMap["image"] = myUrl
 
-                        ref.child(noteid).updateChildren(noteMap)
+                        ref.child(infoid).updateChildren(noteMap)
 
                         Toast.makeText(
                             this,
@@ -155,7 +153,7 @@ class AddNoteActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
 
-                        val intent = Intent(this@AddNoteActivity, MainActivity::class.java)
+                        val intent = Intent(this@AddInfoActivity, MainActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
@@ -169,5 +167,5 @@ class AddNoteActivity : AppCompatActivity() {
 
         }
     }
-
 }
+

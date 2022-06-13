@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddNoteActivity">
+    tools:context=".AddInfoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout_profile"
+        android:id="@+id/app_bar_layout_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/profile_toolbar"
+            android:id="@+id/info_toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="6dp"
@@ -25,14 +26,14 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/close_profile_btn"
+                    android:id="@+id/close_info_btn"
                     android:layout_width="20dp"
                     android:layout_height="30dp"
                     android:layout_alignParentStart="true"
                     android:src="@android:drawable/ic_delete" />
 
                 <ImageView
-                    android:id="@+id/save_info_profile_btn"
+                    android:id="@+id/save_info_btn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
@@ -45,10 +46,10 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
-        android:id="@+id/scroll_view"
+        android:id="@+id/scroll_view_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/app_bar_layout_profile">
+        android:layout_below="@+id/app_bar_layout_info">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,35 +57,47 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/plant_photo"
+                android:id="@+id/add_plant_info_photo"
                 android:layout_width="320dp"
                 android:layout_height="320dp"
-                android:layout_below="@id/app_bar_layout_profile"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/leaf" />
 
             <TextView
-                android:id="@+id/change_plant_image_txt"
+                android:id="@+id/add_plant_image_info_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/plant_photo"
+                android:layout_below="@+id/plant_info_photo"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:text="Change image"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16dp"
-                android:onClick="pickPhoto"/>
+                android:onClick="pickInfoPhoto"/>
+
+            <EditText
+                android:id="@+id/add_plant_info_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:hint="Name"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:gravity="center"/>
 
             <LinearLayout
-                android:id="@+id/top_bar"
+                android:layout_marginTop="10dp"
+                android:id="@+id/top_bar_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="190dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
@@ -103,16 +116,16 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:id="@+id/icon_light"
+                                android:id="@+id/info_icon_light"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/sun" />
 
                             <EditText
-                                android:id="@+id/light_txt"
+                                android:id="@+id/add_info_light_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:hint="Light"
+                                android:hint="Place"
                                 android:textColor="@android:color/black"
                                 android:textSize="12dp" />
 
@@ -133,7 +146,7 @@
                                 android:src="@drawable/water" />
 
                             <EditText
-                                android:id="@+id/water_txt"
+                                android:id="@+id/add_info_water_txt"
                                 android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -157,7 +170,7 @@
                                 android:src="@drawable/ground" />
 
                             <EditText
-                                android:id="@+id/ground_txt"
+                                android:id="@+id/add_info_ground_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:hint="Soil"
@@ -177,39 +190,31 @@
                 android:padding="10dp">
 
                 <EditText
-                    android:id="@+id/plant_nick"
+                    android:id="@+id/add_plant_info_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Nick"
-                    android:inputType="text" />
+                    android:hint="Description"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
 
                 <EditText
-                    android:id="@+id/plant_name"
+                    android:id="@+id/add_plant_info_fert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/plant_nick"
+                    android:layout_below="@+id/add_plant_info_desc"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Name"
-                    android:inputType="text" />
-
-                <EditText
-                    android:id="@+id/plant_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/plant_name"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="Info"
-                    android:inputType="text" />
+                    android:hint="Fertilization"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>

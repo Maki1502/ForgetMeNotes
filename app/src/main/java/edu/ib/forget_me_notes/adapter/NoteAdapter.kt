@@ -6,17 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import edu.ib.forget_me_notes.model.Note
 import edu.ib.forget_me_notes.R
+import edu.ib.forget_me_notes.fragments.NoteFragment
 
 class NoteAdapter(
     private val mContext: Context,
@@ -42,7 +40,16 @@ class NoteAdapter(
         holder.plantImage.rotation = 90F
 
         holder.name.text = note.getName()
-        holder.nick.text = note.getNick().uppercase()
+        holder.nick.text = note.getNick()
+
+        holder.itemView.setOnClickListener {
+            val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+            pref.putString("noteId", note.getNoteid())
+            pref.apply()
+
+            (mContext as FragmentActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, NoteFragment()).commit()
+        }
 
     }
 
@@ -51,6 +58,7 @@ class NoteAdapter(
     }
 
     inner class ViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         var plantImage: CircleImageView
 
         var nick: TextView

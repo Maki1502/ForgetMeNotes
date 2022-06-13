@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import edu.ib.forget_me_notes.LightSensorActivity
-import edu.ib.forget_me_notes.MainActivity
-import edu.ib.forget_me_notes.R
-import edu.ib.forget_me_notes.SignInActivity
+import edu.ib.forget_me_notes.*
 import kotlinx.android.synthetic.main.fragment_settings.view.*
 
 
@@ -38,6 +35,11 @@ class SettingsFragment : Fragment() {
 
         view.light_sensor.setOnClickListener {
             val intent = Intent(context, LightSensorActivity::class.java)
+            startActivity(intent)
+        }
+
+        view.add_info.setOnClickListener {
+            val intent = Intent(context, AddInfoActivity::class.java)
             startActivity(intent)
         }
 

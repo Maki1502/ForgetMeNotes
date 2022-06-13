@@ -1,60 +1,115 @@
 package edu.ib.forget_me_notes.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import edu.ib.forget_me_notes.R
+import edu.ib.forget_me_notes.adapter.InfoAdapter
+import edu.ib.forget_me_notes.model.Info
+import kotlinx.android.synthetic.main.fragment_search.view.*
+import java.util.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var recyclerView: RecyclerView? = null
+    private var infoAdapter: InfoAdapter? = null
+    private var mInfo: MutableList<Info>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
+
+        recyclerView = view.findViewById(R.id.recyclerview_search)
+        recyclerView?.setHasFixedSize(true)
+        recyclerView?.layoutManager = LinearLayoutManager(context)
+
+        mInfo = ArrayList()
+        infoAdapter = context?.let { InfoAdapter(it, mInfo as ArrayList<Info>, true) }
+        recyclerView?.adapter = infoAdapter
+
+        view.search_edit_text.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun afterTextChanged(s: Editable?) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                if (view.search_edit_text.text.toString() != "") {
+
+                    recyclerView?.visibility = View.VISIBLE
+
+                    retrieveInfo()
+                    searchInfo(s.toString().lowercase())
+                }
+
+            }
+        })
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun searchInfo(input: String) {
+
+        val query = FirebaseDatabase.getInstance().reference
+            .child("Plants")
+            .orderByChild("infoname")
+            .startAt(input)
+            .endAt(input + "\uf8ff")
+
+        query.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                mInfo?.clear()
+                for (snapshot in dataSnapshot.children) {
+                    val info = snapshot.getValue(Info::class.java)
+                    if (info != null) {
+                        mInfo?.add(info)
+                    }
+                }
+
+                infoAdapter?.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) { }
+
+        })
+
+    }
+    private fun retrieveInfo() {
+        val usersRef = FirebaseDatabase.getInstance().reference.child("Plants")
+        usersRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (view?.search_edit_text?.text.toString() == "") {
+                    mInfo?.clear()
+
+                    for (snapshot in dataSnapshot.children) {
+                        val info = snapshot.getValue(Info::class.java)
+                        if (info != null) {
+                            mInfo?.add(info)
+                        }
+                    }
+
+                    infoAdapter?.notifyDataSetChanged()
                 }
             }
+
+            override fun onCancelled(error: DatabaseError) { }
+
+        })
     }
 }
